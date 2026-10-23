@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#F0F4FF">
+<title>CIS Flight Support GmbH — ground handling, dispatch and flight support</title>
+<meta name="description" content="Ground handling, passenger services, flight dispatch, charters, maintenance consultancy and aircraft transactions across Europe, the CIS and the Middle East.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/site.css?v=340">
+<style>
+/* critical: gallery works even with a stale external stylesheet */
+.intro{align-items:start}
+@media (max-width:1180px) and (orientation:portrait){.intro{grid-template-columns:1fr}}
+.intro .gallery{margin-top:4px}
+@media(min-width:1181px){.intro .gallery{margin-top:0}.gtrack img{aspect-ratio:3/2;height:auto}}
+.gallery{position:relative;border-radius:18px;overflow:hidden}
+.gtrack{display:flex!important;flex-wrap:nowrap;overflow-x:auto;scroll-snap-type:x mandatory;
+  scroll-behavior:smooth;scrollbar-width:none}
+.gtrack::-webkit-scrollbar{display:none}
+.gtrack figure{flex:0 0 100%!important;width:100%;margin:0;scroll-snap-align:center;position:relative}
+.gtrack img{width:100%;aspect-ratio:3/2;object-fit:cover;object-position:0% 50%;display:block}
+.gtrack figure::after{content:"";position:absolute;inset:0;pointer-events:none;z-index:1;
+  background-image:linear-gradient(rgba(255,255,255,.13) 1px,transparent 1px),
+                   linear-gradient(90deg,rgba(255,255,255,.13) 1px,transparent 1px);
+  background-size:78px 78px;mix-blend-mode:overlay}
+.gtrack figcaption{z-index:2;position:absolute;left:0;right:0;bottom:0;padding:34px 20px 16px;font-size:14.5px;
+  color:#fff;background:linear-gradient(180deg,rgba(4,26,36,0),rgba(4,26,36,.82))}
+.gallery .cnav{position:absolute;top:calc(50% - 25px);z-index:3}
+.gallery .cnav.prev{left:12px}.gallery .cnav.next{right:12px}
+.gallery .cdots{position:absolute;left:0;right:0;bottom:56px;margin:0;display:flex;gap:8px;justify-content:center}
+.gallery .cdots i{width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,.45);cursor:pointer}
+.gallery .cdots i.on{background:#fff;width:26px;border-radius:99px}
+.gallery .cnav{background:rgba(255,255,255,.72);border:1px solid rgba(6,42,56,.14);
+  width:50px;height:50px;border-radius:50%;font-size:26px;color:#2A3034;cursor:pointer}
+.gallery .cnav[disabled]{opacity:.3;pointer-events:none}
+.gallery .cnav.wrap{border-color:#80694E;color:#80694E}
+</style>
+</head>
+<body>
+<div class="progress" id="progress" aria-hidden="true"></div>
+
+<div class="util">
+  <div class="wrap">
+    <span class="tag">Ground handling &middot; Dispatch &middot; Charters &middot; Transactions &middot; Advisory</span>
+    <a class="aog" href="tel:+491622684626"><b>AOG &amp; short notice</b>+49 162 268 4626</a>
+  </div>
+</div>
+
+<header>
+  <div class="wrap bar">
+    <a class="logo" href="index.html">
+      <span><b>CIS Flight Support</b><small>GmbH &middot; Germany</small></span>
+    </a>
+    <button class="burger" id="burger" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
+    <nav class="nav">
+      <div class="drop">
+        <a href="#services" class="dtop">Services<svg viewBox="0 0 12 8" aria-hidden="true"><path d="M1 1l5 5 5-5"/></svg></a>
+        <div class="menu"><span class="mlab">On the ground</span><div class="mgrid"><a href="services.html#ground-handling">Ground handling</a><a href="services.html#passenger-services">Passenger services</a><a href="services.html#vip">VIP lounge &amp; meet-and-greet</a><a href="services.html#catering">Catering</a><a href="services.html#crew">Crew support</a><a href="services.html#dispatch">Flight dispatch</a></div><div class="mmore"><span class="mlab">Charter &amp; transactions</span><div class="mgrid"><a href="services.html#charters">Charter organisation</a><a href="services.html#transactions">Aircraft transactions</a></div></div><div class="mmore"><span class="mlab">Technical &amp; advisory</span><div class="mgrid"><a href="services.html#maintenance">Maintenance consultancy</a><a href="prebuy.html">Pre-buy inspections</a><a href="services.html#advisory">Aviation advisory</a></div></div><div class="mmore"><span class="mlab">Tools &amp; guides</span><div class="mgrid"><a href="trip-estimator.html">Trip estimator</a><a href="services.html#turnaround">How a turnaround runs</a><a href="prebuy.html">How a pre-buy runs</a></div></div></div>
+      </div>
+      <a class="temp-off" href="coverage.html">Coverage</a>
+      <a class="temp-off" href="fleet.html">Fleet</a>
+      <a href="#academy">CAW Academy</a>
+      <a href="#contact" class="btn" data-request="callback">Request a call</a>
+    </nav>
+  </div>
+</header>
+
+<div class="sheet" id="sheet" hidden>
+  <div class="sheetin">
+    <button class="sheetx" type="button" aria-label="Close menu"><span aria-hidden="true">&times;</span></button>
+    <a href="index.html">Home</a>
+    <a href="#services">Services</a>
+    <div class="sub"><span class="mlab">On the ground</span><a href="services.html#ground-handling">Ground handling</a><a href="services.html#passenger-services">Passenger services</a><a href="services.html#vip">VIP lounge &amp; meet-and-greet</a><a href="services.html#catering">Catering</a><a href="services.html#crew">Crew support</a><a href="services.html#dispatch">Flight dispatch</a><span class="mlab">Charter &amp; transactions</span><a href="services.html#charters">Charter organisation</a><a href="services.html#transactions">Aircraft transactions</a><span class="mlab">Technical &amp; advisory</span><a href="services.html#maintenance">Maintenance consultancy</a><a href="prebuy.html">Pre-buy inspections</a><a href="services.html#advisory">Aviation advisory</a><span class="mlab">Tools &amp; guides</span><a href="trip-estimator.html">Trip estimator</a><a href="services.html#turnaround">How a turnaround runs</a><a href="prebuy.html">How a pre-buy runs</a></div>
+    <a class="temp-off" href="coverage.html">Coverage</a>
+    <a class="temp-off" href="fleet.html">Fleet</a>
+    <a href="#academy">CAW Academy</a>
+    <a class="sheetcta" href="#contact" data-request="callback">Request a call</a>
+  </div>
+</div>
+<div class="hero" id="top">
+  <div class="grid" aria-hidden="true"></div>
+  <span class="blob b1" aria-hidden="true"></span>
+  <span class="blob b2" aria-hidden="true"></span>
+  <div class="heroshot" aria-hidden="true">
+    <img src="assets/img/hero-banner.jpg" alt="" fetchpriority="high">
+  </div>
+  <div class="wrap">
+    <div class="col">
+    <h1>We handle what happens on the ground</h1>
+    <p>Operators, trip planners and owners call us for everything that happens before the doors close and after they open. Real people at the aircraft, not a booking desk.</p>
+    </div>
+  </div>
+</div>
+
+<div class="doorbar">
+  <div class="wrap">
+    <div class="doorcard">
+      <p class="doorlead">How can we help?</p>
+      <h2 class="doorhead">Your flight. Our ground expertise.</h2>
+      <p class="doorsub">Specialist aviation support, whenever and wherever you need it.</p>
+      <a class="btn doorprime" href="contact.html" data-request="charters">Arrange a charter <i aria-hidden="true">&#8599;</i></a>
+      <div class="doors">
+        <a class="btn" href="contact.html" data-request="ground-handling">Ground handling</a>
+        <a class="btn" href="contact.html" data-request="pre-buy">Pre-buy inspection</a>
+      </div>
+      <p class="doorall"><a href="#services">Explore all 12 services</a></p>
+    </div>
+  </div>
+</div>
+
+<section class="sec" id="estimator">
+  <div class="wrap center">
+    <div class="eyebrow">Charter planning</div>
+    <h2>Estimate flight time, stops and cost</h2>
+    <hr class="rule">
+    <p class="sub">Two airports, and you get the distance, the block time, whether it needs a fuel stop and roughly what it costs by aircraft category. Send it over and we will price it properly.</p>
+  </div>
+  <div class="wrap">
+    <div class="te" id="te">
+      <div class="te-form">
+        <div class="te-route">
+          <div class="te-field">
+            <label for="teFrom">From</label>
+            <input id="teFrom" type="text" autocomplete="off" spellcheck="false"
+                   placeholder="Airport, city or ICAO" aria-describedby="teFromPick">
+            <div class="te-pick" id="teFromPick" role="listbox" hidden></div>
+            <p class="te-chosen" id="teFromName"></p>
+          </div>
+          <button class="te-swap" id="teSwap" type="button" aria-label="Swap airports">&#8646;</button>
+          <div class="te-field">
+            <label for="teTo">To</label>
+            <input id="teTo" type="text" autocomplete="off" spellcheck="false"
+                   placeholder="Airport, city or ICAO" aria-describedby="teToPick">
+            <div class="te-pick" id="teToPick" role="listbox" hidden></div>
+            <p class="te-chosen" id="teToName"></p>
+          </div>
+        </div>
+        <div class="te-plan-fields" aria-label="Planning details">
+          <div class="te-plan-field">
+            <label for="teAircraft">Aircraft model</label>
+            <div class="te-model-control" id="teModelControl">
+              <select id="teAircraft"><option value="">Compare all aircraft categories</option></select>
+              <button class="te-model-trigger" id="teModelTrigger" type="button"
+                      aria-haspopup="listbox" aria-expanded="false" aria-controls="teModelOptions" hidden>
+                <span id="teModelValue">Compare all aircraft categories</span><span class="te-model-chevron" aria-hidden="true"></span>
+              </button>
+              <div class="te-model-list" id="teModelOptions" role="listbox" aria-label="Aircraft model" hidden></div>
+            </div>
+          </div>
+          <label class="te-plan-field" for="teDate">Departure date (UTC)
+            <input type="date" id="teDate">
+          </label>
+          <label class="te-plan-field" id="teReturnDateWrap" for="teReturnDate" hidden>Return date (UTC)
+            <input type="date" id="teReturnDate">
+          </label>
+        </div>
+        <details class="te-aircraft-compare" id="teAircraftCompare">
+          <summary>Compare aircraft performance <span id="teCompareCount">and indicative charter rates</span></summary>
+          <p class="te-aircraft-scroll-hint">Swipe sideways for cruise speed, range and hourly rate →</p>
+          <div class="te-aircraft-scroll" role="region" aria-label="Aircraft performance comparison" tabindex="0">
+            <table class="te-aircraft-table">
+              <thead><tr><th>Aircraft model</th><th>Passengers</th><th>Planning cruise</th><th>Reference range</th><th>Est. €/flight hr</th></tr></thead>
+              <tbody id="teAircraftCompareRows"></tbody>
+            </table>
+          </div>
+          <p class="te-aircraft-disclaimer">Illustrative European charter benchmarks, not live offers. Cruise speeds are planning assumptions; reference ranges are not guaranteed nonstop capability. Fuel-stop estimates apply an additional reserve margin. Availability, payload, winds and operator pricing vary.</p>
+        </details>
+        <div class="te-opts">
+          <label class="te-inline"><input type="checkbox" id="teReturn"> Return trip</label>
+          <label class="te-inline te-avoid-label" title="Estimate a detour around Russia, Belarus and Ukraine. This is an approximate geographic model, not live airspace data.">
+            <input type="checkbox" id="teAvoid" checked aria-label="Avoid Russia, Belarus and Ukraine when estimating the route">
+            <span>Avoid Russia, Belarus &amp; Ukraine</span>
+          </label>
+          <label class="te-inline">Passengers
+            <input type="number" id="tePax" min="1" max="16" value="4" inputmode="numeric">
+          </label>
+          <span class="te-go">
+            <span class="te-flag" id="teNote" hidden>Something changed</span>
+            <button type="button" class="btn" id="teGo">Calculate</button>
+          </span>
+        </div>
+      </div>
+
+      <p class="te-empty" id="teHint">Pick a departure and a destination, then press Calculate.</p>
+
+      <div class="te-out" id="teOut" hidden>
+        <div class="te-dist te-dist-compact">
+          <div><b id="teNm">—</b><span>Estimated distance (nm)</span><small class="te-subdistance"><span id="teKm">—</span> km</small></div>
+          <div><b id="teDur">—</b><span>Estimated flight time</span></div>
+        </div>
+
+        <table class="te-table">
+          <thead>
+            <tr><th>Aircraft category</th><th>Block time</th><th>Stops</th><th id="teCostHeading">Indicative cost</th></tr>
+          </thead>
+          <tbody id="teRows"></tbody>
+        </table>
+
+        <p class="te-customer-note">Indicative estimate only. We'll confirm the route, availability and final price with an operator.</p>
+        <details class="te-method">
+          <summary>How this estimate works <span>Routing and pricing assumptions</span></summary>
+          <div class="te-method-content">
+            <p class="te-ext" id="teExt"></p>
+            <p class="te-weather" id="teWeather" aria-live="polite"></p>
+            <p class="te-pricing" id="tePricing" aria-live="polite"></p>
+            <p><strong>Not a flight plan or quotation.</strong> The route uses simplified geographic allowances, not published airways, validated SID/STAR procedures or live NOTAMs. Aircraft performance, fees, positioning and stops use planning benchmarks, not verified operator tariffs. Flight time assumes still air unless a licensed weather feed is connected. Actual flight legality, schedule, charges and availability require an operator's confirmation.</p>
+          </div>
+        </details>
+
+        <div class="te-cta">
+          <a class="btn" id="teSend" href="contact.html">Contact us about this trip</a>
+        </div>
+      </div>
+
+      <div class="te-legs" id="teLegs" hidden>
+        <h3>Empty legs on this route</h3>
+        <div id="teLegsBody"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section class="sec svc" id="services">
+  <div class="wrap center">
+    <div class="eyebrow">Our services</div>
+    <h2>Twelve service lines</h2>
+    <hr class="rule">
+    <p class="sub">Everything an aircraft and its people need on the ground and on paper. Each mandate is run personally by one of the two managing directors.</p>
+  </div>
+  <div class="wrap">
+    <div class="filters" role="tablist">
+      <button class="fbtn on" data-f="all">All services</button>
+      <button class="fbtn" data-f="ground">Ground operations</button>
+      <button class="fbtn" data-f="commercial">Commercial</button>
+      <button class="fbtn" data-f="technical">Technical</button>
+      <button class="fbtn" data-f="training">Training</button>
+    </div>
+    <div class="svccar">
+      <button class="cnav prev" id="svcPrev" aria-label="Previous service">&#8249;</button>
+      <button class="cnav next" id="svcNext" aria-label="Next service">&#8250;</button>
+      <div class="cards" id="svcTrack">
+      <div class="card" id="ground-handling" data-cat="ground">
+        <div class="cshot"><img src="assets/img/ramp-turnaround-card.jpg" alt="Handling crew working a business jet turnaround on the ramp" width="760" height="506" decoding="async" loading="eager" fetchpriority="high"><span class="ctag">Ground operations</span></div>
+        <h3>Ground handling</h3>
+        <p>Hands-on airport handling supervision, with one reliable contact at the aircraft.</p>
+        <a href="#contact" data-request="ground-handling">Request station cover <i aria-hidden="true">&#8599;</i></a>
+      </div>
+      <div class="card" id="passenger-services" data-cat="ground">
+        <div class="cshot"><img src="assets/img/vip-lounge.jpg?v=207" alt="Executive lounge with leather seating and private screening area" width="760" height="428" decoding="async" loading="eager" fetchpriority="high"><span class="ctag">Ground operations</span></div>
+        <h3>Passenger services</h3>
+        <p>A thoughtful end-to-end experience from airport arrival to boarding.</p>
+        <a href="#contact" data-request="passenger-services">Ask about passenger services <i aria-hidden="true">&#8599;</i></a>
+      </div>
+      <div class="card" id="crew" data-cat="ground">
+        <div class="cshot"><img src="assets/img/crew-lounge.jpg" alt="Flight crew waiting with their bags in an airport crew lounge" width="760" height="428" decoding="async" loading="eager" fetchpriority="low"><span class="ctag">Ground operations</span></div>
+        <h3>Crew support</h3>
+        <p>Transfers, hotels and practical coordination that keep your team ready.</p>
+        <a href="#contact" data-request="crew">Arrange crew support <i aria-hidden="true">&#8599;</i></a>
+      </div>
+      <div class="card" id="vip" data-cat="ground">
+        <div class="cshot"><img src="assets/img/meet-and-greet.jpg?v=207" alt="Car waiting at the aircraft steps for a passenger transfer on the ramp" width="760" height="428" decoding="async" loading="eager" fetchpriority="low"><span class="ctag">Ground operations</span></div>
+        <h3>VIP lounge &amp; meet-and-greet</h3>
+        <p>Discreet, smooth passenger handling and ground transfers.</p>
+        <a href="#contact" data-request="vip">Request VIP handling <i aria-hidden="true">&#8599;</i></a>
+      </div>
+      <div class="card" id="catering" data-cat="ground">
+        <div class="cshot"><img src="assets/img/catering.jpg?v=207" alt="Seafood tower and laid table in a business jet cabin" width="760" height="428" decoding="async" loading="eager" fetchpriority="low"><span class="ctag">Ground operations</span></div>
+        <h3>Catering</h3>
+        <p>Carefully coordinated meal uplift with passenger preferences in mind.</p>
+        <a href="#contact" data-request="catering">Order catering <i aria-hidden="true">&#8599;</i></a>
+      </div>
+      <div class="card" id="dispatch" data-cat="ground">
+        <div class="cshot"><img src="assets/img/dispatch.jpg?v=207" alt="Flight log, chart and crew epaulette during trip planning" width="760" height="428" decoding="async" loading="eager" fetchpriority="low"><span class="ctag">Ground operations</span></div>
+        <h3>Flight dispatch</h3>
+        <p>Flight plans, permits, slots and flight support, coordinated in one place.</p>
+        <a href="#contact" data-request="dispatch">Request dispatch support <i aria-hidden="true">&#8599;</i></a>
+      </div>
+      <div class="card" id="charters" data-cat="commercial">
+        <div class="cshot"><img src="assets/img/on-stand-sunset-card.jpg" alt="Business jet on stand at sunset before a charter departure" width="760" height="506" decoding="async" loading="eager" fetchpriority="low"><span class="ctag">Commercial</span></div>
+        <h3>Charter organisation</h3>
+        <p>Aircraft sourcing, operator vetting and a clear commercial process for your next flight.</p>
+        <a href="#contact" data-request="charters">Arrange a charter <i aria-hidden="true">&#8599;</i></a>
+      </div>
+      <div class="card" id="transactions" data-cat="commercial">
+        <div class="cshot"><img src="assets/img/transactions.jpg?v=207" alt="Handshake at the airstair after an aircraft handover" width="760" height="428" decoding="async" loading="eager" fetchpriority="low"><span class="ctag">Commercial</span></div>
+        <h3>Aircraft transactions</h3>
+        <p>Commercial and technical support during aircraft acquisition and sale.</p>
+        <a href="#fleet" data-request="transactions">Discuss a transaction <i aria-hidden="true">&#8599;</i></a>
+      </div>
+      <div class="card" id="maintenance" data-cat="technical">
+        <div class="cshot"><img src="assets/img/maintenance.jpg?v=207" alt="Two engineers working on an accessory gearbox under the aircraft" width="760" height="428" decoding="async" loading="eager" fetchpriority="low"><span class="ctag">Technical</span></div>
+        <h3>Maintenance consultancy</h3>
+        <p>Plan and supervise maintenance events with experienced, practical oversight.</p>
+        <a href="#contact" data-request="maintenance">Discuss a work package <i aria-hidden="true">&#8599;</i></a>
+      </div>
+      <div class="card" id="pre-buy" data-cat="technical">
+        <div class="cshot"><img src="assets/img/prebuy-card.jpg?v=207" alt="Engineer inspecting an open equipment bay by torchlight during a pre-purchase inspection" width="760" height="428" decoding="async" loading="eager" fetchpriority="low"><span class="ctag">Technical</span></div>
+        <h3>Pre-buy inspections</h3>
+        <p>Independent inspection support before a major aircraft purchase decision.</p>
+        <a href="#prebuy">See the process <i aria-hidden="true">&#8599;</i></a>
+      </div>
+      <div class="card" id="advisory" data-cat="technical">
+        <div class="cshot"><img src="assets/img/advisory.jpg?v=207" alt="Advisory team working through documents around a meeting table" width="760" height="428" decoding="async" loading="eager" fetchpriority="low"><span class="ctag">Technical</span></div>
+        <h3>Aviation advisory</h3>
+        <p>Practical guidance for complex operational and technical matters.</p>
+        <a href="#contact" data-request="advisory">Ask an adviser <i aria-hidden="true">&#8599;</i></a>
+      </div>
+      <div class="card acad" id="academy-card" data-cat="training">
+        <div class="cshot"><img src="assets/img/caw-card.jpg?v=207" alt="CAW Academy — airworthiness made learnable, shown on iPhone, iPad and MacBook" width="760" height="475" decoding="async" loading="eager" fetchpriority="low"><span class="ctag">Training</span></div>
+        <h3>CAW Academy</h3>
+        <p>Accessible, structured airworthiness training across major aviation frameworks.</p>
+        <a href="https://caw-academy.com">See the platform <i aria-hidden="true">&#8599;</i></a>
+      </div>
+      </div>
+      <div class="cdots" id="svcDots"></div>
+    </div>
+  </div>
+
+</section>
+
+
+<section class="sec">
+  <div class="wrap intro">
+    <div>
+      <div class="eyebrow">About CIS Flight Support</div>
+      <h2>An aviation services company</h2>
+      <hr class="rule">
+      <p>For more than twenty years CIS Flight Support has worked for private owners, corporate flight departments and regional operators across Europe — handling and dispatching their flights, advising on maintenance and regulations, arranging charters, and buying and selling the aircraft themselves. We work in small numbers and stay on a file from the first conversation to the last signature.</p>
+      <p>What sets the firm apart is the technical side. Records reviews, borescope findings and maintenance forecasts are produced in house by people with maintenance and CAMO backgrounds, rather than bought in at the last minute. The same expertise now runs the CAW Academy training platform.</p>
+    </div>
+    <div class="gallery">
+        <div class="gtrack" id="galTrack">
+          <figure><img src="assets/img/ramp-turnaround.jpg" style="object-position:0% 50%" alt="Business jet under tow on the ramp at sunrise, handling crew alongside" loading="lazy">
+            <figcaption>On the ramp — supervised turnaround at first light</figcaption></figure>
+          <figure><img src="assets/img/on-stand-sunset.jpg" style="object-position:0% 50%" alt="Large-cabin business jet on stand at sunset with airstair down" loading="lazy">
+            <figcaption>On stand — passengers boarding before departure</figcaption></figure>
+          <figure><img src="assets/img/hangar.jpg" style="object-position:0% 50%" alt="Large-cabin business jet inside a hangar at dusk" loading="lazy">
+            <figcaption>In the hangar — overnight parking and maintenance input</figcaption></figure>
+          <figure><img src="assets/img/night-ramp.jpg" style="object-position:0% 50%" alt="Two large-cabin business jets on a floodlit ramp at night, handling agent walking towards baggage" loading="lazy">
+            <figcaption>After dark — night stop, baggage and crew on the ramp</figcaption></figure>
+        </div>
+        <button class="cnav prev" id="galPrev" aria-label="Previous photo">&#8249;</button>
+        <button class="cnav next" id="galNext" aria-label="Next photo">&#8250;</button>
+        <div class="cdots" id="galDots"></div>
+      </div>
+    <ul class="checks">
+      <li>Ground handling supervision</li>
+      <li>Passenger and VIP services</li>
+      <li>Crew support, lounges and catering</li>
+      <li>Flight planning, slots and permits</li>
+      <li>Charter sourcing and operator vetting</li>
+      <li>Maintenance scoping and shop-visit oversight</li>
+      <li>Market valuation and needs analysis</li>
+      <li>Aircraft search, listing and negotiation</li>
+      <li>Pre-buy inspection supervision</li>
+      <li>Import, export and registration</li>
+      <li>Regulatory compliance and audit preparation</li>
+      </ul>
+  </div>
+</section>
+
+<section class="sec turn" id="turnaround">
+  <div class="wrap center">
+    <div class="eyebrow">Ground operations</div>
+    <h2>What a supervised turnaround looks like</h2>
+    <hr class="rule">
+    <p class="sub">A typical 70-minute turnaround on a mid-size jet. We hold the timeline, chase what slips, and tell you early when it will not hold — rather than after the slot is gone.</p>
+  </div>
+  <div class="wrap">
+    <div class="gantt">
+      <div class="gbg" aria-hidden="true"><img src="assets/img/turnaround-bg.jpg" alt="" loading="lazy"></div>
+      <div class="grows"><div class="trow" style="--d:0ms"><span class="tname" data-min="6 min">Chocks on, GPU connected</span><span class="tbar"><i class="seg ops" style="--x:0.0%;--w:8.0%"><em>6′</em></i></span></div><div class="trow" style="--d:80ms"><span class="tname" data-min="10 min">Passengers disembark</span><span class="tbar"><i class="seg pax" style="--x:5.3%;--w:13.3%"><em>10′</em></i></span></div><div class="trow" style="--d:160ms"><span class="tname" data-min="14 min">Baggage and cargo off</span><span class="tbar"><i class="seg ops" style="--x:10.7%;--w:18.7%"><em>14′</em></i></span></div><div class="trow" style="--d:240ms"><span class="tname" data-min="22 min">Cabin service and cleaning</span><span class="tbar"><i class="seg pax" style="--x:21.3%;--w:29.3%"><em>22′</em></i></span></div><div class="trow" style="--d:320ms"><span class="tname" data-min="22 min">Refuelling</span><span class="tbar"><i class="seg fuel" style="--x:24.0%;--w:29.3%"><em>22′</em></i></span></div><div class="trow" style="--d:400ms"><span class="tname" data-min="18 min">Catering uplift</span><span class="tbar"><i class="seg pax" style="--x:40.0%;--w:24.0%"><em>18′</em></i></span></div><div class="trow" style="--d:480ms"><span class="tname" data-min="26 min">Crew briefing, weather and slots</span><span class="tbar"><i class="seg ops" style="--x:34.7%;--w:34.7%"><em>26′</em></i></span></div><div class="trow" style="--d:560ms"><span class="tname" data-min="14 min">Passengers board</span><span class="tbar"><i class="seg pax" style="--x:66.7%;--w:18.7%"><em>14′</em></i></span></div><div class="trow" style="--d:640ms"><span class="tname" data-min="6 min">Doors closed, pushback</span><span class="tbar"><i class="seg ops" style="--x:85.3%;--w:8.0%"><em>6′</em></i></span></div></div>
+      <div class="gaxis"><span style="left:0.0%">0′</span><span style="left:20.0%">15′</span><span style="left:40.0%">30′</span><span style="left:60.0%">45′</span><span style="left:80.0%">60′</span><span style="left:100.0%">75′</span></div>
+      <div class="gkey">
+        <span><i class="ops"></i>Coordination</span><span><i class="pax"></i>Cabin &amp; passengers</span><span><i class="fuel"></i>Fuel</span>
+      </div>
+    </div>
+    <p class="covnote">Illustrative sequence. Actual timings depend on type, stand, slot and the handling agent on the day.</p>
+    <p class="secreq">
+      <a class="btn" href="contact.html" data-request="ground-handling">Request a supervised turnaround</a>
+    </p>
+  </div>
+
+</section>
+
+<div class="dual">
+  <div class="a">
+    <h3>Selling your aircraft</h3>
+    <p>A valuation, a marketing plan and a realistic timeline — before you commit to anything.</p>
+    <a class="btn ghost" href="#contact" data-request="valuation">Request a valuation</a>
+  </div>
+  <div class="b">
+    <h3>We inspect before you buy</h3>
+    <p>Independent pre-buy inspections, including on aircraft we are not brokering ourselves.</p>
+    <a class="btn ghost" href="#prebuy">See how it works</a>
+  </div>
+</div>
+
+<section class="sec" id="prebuy">
+  <div class="wrap center">
+    <div class="eyebrow">Pre-purchase inspection</div>
+    <h2>How a pre-buy runs</h2>
+    <hr class="rule">
+    <p class="sub">Five to ten working days from start to report, depending on type, records condition and the maintenance organisation's slot.</p>
+  </div>
+  <div class="wrap">
+    <div class="pbgrid">
+    <div class="stepper">
+      <div class="spills"><button class="spill on" data-s="0"><em>01</em>Records first</button><button class="spill" data-s="1"><em>02</em>On the aircraft</button><button class="spill" data-s="2"><em>03</em>Ground and flight checks</button><button class="spill" data-s="3"><em>04</em>Report and numbers</button></div>
+      <div class="spanels"><div class="spanel on" data-s="0"><h3>Records first</h3><p>Logbooks, dirty fingerprint, AD and SB status, life-limited parts, damage and repair history. Most deals that fail, fail here — before anyone travels.</p></div><div class="spanel" data-s="1"><h3>On the aircraft</h3><p>Physical survey with the maintenance organisation: engines borescoped, structure and corrosion checked, systems run, cabin and avionics photographed.</p></div><div class="spanel" data-s="2"><h3>Ground and flight checks</h3><p>Functional checks and, where the deal calls for it, an acceptance flight with our engineer on board recording what the aircraft actually does.</p></div><div class="spanel" data-s="3"><h3>Report and numbers</h3><p>Findings split into airworthiness items, negotiation items and things to live with, each costed so you can put the figures in front of the seller.</p></div></div>
+    </div>
+    <figure class="pbshot">
+      <img src="assets/img/prebuy-inspection.jpg" alt="Engineer inspecting an aircraft bay by torchlight during a pre-purchase inspection" loading="lazy">
+      <figcaption>Our engineer is on the aircraft for the physical survey — we do not sign off on someone else's photographs.</figcaption>
+    </figure>
+    </div>
+    <p class="secreq">
+      <a class="btn" href="contact.html" data-request="pre-buy">Request a pre-buy inspection</a>
+    </p>
+  </div>
+
+</section>
+
+<div class="seam-caw" aria-hidden="true"></div>
+<section class="sec academy" id="academy">
+  <div class="wrap center">
+    <div class="eyebrow">Training platform</div>
+    
+  </div>
+  <div class="wrap">
+    <a class="cawbanner" href="https://caw-academy.com" target="_blank" rel="noopener">
+      <img src="assets/img/caw-banner.jpg?v=207" alt="CAW Academy — airworthiness made learnable. Plain-language airworthiness training across the EASA, UK CAA, UAE GCAA and FAA frameworks, built for teams from beginners to industry leaders. Shown running on iPhone, iPad and MacBook, with 75+ courses, 1,600+ lessons, 10,500+ flashcards and 24,000+ exam questions. Coming soon on the App Store and Google Play.">
+    </a>
+
+    <div class="cawband">
+      <div class="cawtext">
+        <h2>We make aviation regulation easy to learn</h2>
+        <p>CAW Academy is our training platform, focused on continuing airworthiness and asset management. Available for the EASA, FAA, GCAA and UK CAA frameworks.</p>
+      </div>
+      <p class="cawcta">
+        <a class="btn" href="https://caw-academy.com" target="_blank" rel="noopener"
+           data-request="academy-trial">Request a free trial</a>
+      </p>
+    </div>
+  </div>
+
+</section>
+
+
+<section class="sec cred">
+  <div class="wrap">
+    <div class="credgrid">
+      <div>
+        <div class="eyebrow">Our people</div>
+        <h2>A small team</h2>
+        <hr class="rule">
+      </div>
+      <div>
+        <p class="lead">Our staff are highly professional and multilingual, with hands-on experience across executive and commercial aviation — ground handling and passenger services, flight dispatch, maintenance and continuing airworthiness, and cross-border aircraft transactions.</p>
+        <p>That mix is the point. The person arranging your charter has worked a turnaround, the person reading the records has signed for work on the aircraft, and the person handling a purchase has closed deals across several registries and jurisdictions. Nothing is passed to someone who has only read about it.</p>
+        <ul class="pillars">
+          <li><b>Executive &amp; commercial aviation</b><span>Business jets and airline operations, on the ramp and in the office</span></li>
+          <li><b>Cross-border transactions</b><span>Purchases, sales and registry changes across Europe, the CIS and the Middle East</span></li>
+          <li><b>Multilingual</b><span>German, English and Russian in daily working use</span></li>
+          <li><b>Technical depth</b><span>Records, maintenance planning and airworthiness handled in house</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec contact" id="contact">
+  <div class="wrap">
+    <div class="cgrid">
+      <div>
+        <div class="eyebrow">Contact</div>
+        <h2>Get in touch</h2>
+        <hr class="rule">
+        <p>A turnaround next week, a permit today, a charter, an inspection, a purchase or a training licence — send the outline and we will tell you what we can cover, what it costs and what we need from you. One of the two partners answers within a working day.</p>
+        <div class="cinfo">
+          <div><strong>Office</strong><span>Gartenstraße 6A<br>D-86391 Stadtbergen, Germany</span></div>
+          <div><strong>Telephone</strong><span><a href="tel:+491622684626">+49 162 268 4626</a></span></div>
+          <div><strong>Email</strong><span><a href="mailto:ops@cisflightsupport.com">ops@cisflightsupport.com</a></span></div>
+          <div><strong>Hours</strong><span>Mon–Fri 08:00–18:00 CET, AOG support outside hours</span></div>
+        </div>
+      </div>
+      <div class="form">
+        <h3>Send an enquiry</h3>
+        <div class="fr">
+          <div class="f"><label for="fn">First name</label><input id="fn" type="text"></div>
+          <div class="f"><label for="ln">Last name</label><input id="ln" type="text"></div>
+        </div>
+        <div class="fr">
+          <div class="f"><label for="em">Email</label><input id="em" type="email"></div>
+          <div class="f"><label for="ph">Telephone</label><input id="ph" type="tel"></div>
+        </div>
+        <div class="f"><label for="sv">Service required</label>
+          <select id="sv">
+            <option value="">Select a service</option>
+            <option>Ground handling</option>
+            <option>Passenger services</option>
+            <option>Crew support</option>
+            <option>VIP lounge and meet-and-greet</option>
+            <option>Catering</option>
+            <option>Flight dispatch, slots and permits</option>
+            <option>Charter organisation</option>
+            <option>Maintenance consultancy</option>
+            <option>Pre-buy inspection</option>
+            <option>Buying or selling an aircraft</option>
+            <option>Aviation advisory</option>
+            <option>CAW Academy training</option>
+            <option>Something else</option>
+          </select>
+        </div>
+        <div class="f"><label for="ms">How can we assist</label><textarea id="ms" placeholder="Airport and dates, aircraft type or registration, and what you need from us"></textarea></div>
+        <button type="button">Submit enquiry</button>
+        <p class="fine">Enquiries are treated confidentially. We do not share flight, aircraft or owner details with third parties without written consent.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<footer>
+  <div class="wrap fgrid">
+    <div>
+      <h4>CIS Flight Support GmbH</h4>
+      <p>Ground handling, passenger services, dispatch, charters, aircraft transactions and technical advisory — and manager of the CAW Academy training platform. Based in Stadtbergen near Augsburg, working across Europe, the CIS and the Middle East.</p>
+      <p><a href="tel:+491622684626">+49 162 268 4626</a><br><a href="mailto:ops@cisflightsupport.com">ops@cisflightsupport.com</a></p>
+    </div>
+    <div>
+      <h4>Services</h4>
+      <ul>
+        <li><a href="services.html#ground-handling">Ground handling &amp; passenger services</a></li>
+        <li><a href="services.html#crew">Crew, VIP handling &amp; catering</a></li>
+        <li><a href="services.html#dispatch">Flight dispatch &amp; charters</a></li>
+        <li><a href="services.html#maintenance">Maintenance consultancy &amp; advisory</a></li>
+        <li class="temp-off"><a class="temp-off" href="fleet.html">Aircraft transactions</a></li>
+        <li><a href="prebuy.html">Pre-buy inspections</a></li>
+        <li><a href="#academy">CAW Academy</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Company</h4>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="trip-estimator.html">Trip estimator</a></li>
+        <li class="temp-off"><a class="temp-off" href="coverage.html">Coverage</a></li>
+        <li><a href="team.html">Our team</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap copy">
+    <span>© 2026 CIS Flight Support GmbH &middot; HRB 27301 &middot; USt-IdNr. DE283 871 553 &middot; Gartenstraße 6A, D-86391 Stadtbergen</span>
+  </div>
+</footer>
+
+<nav class="callbar" aria-label="Quick contact">
+  <a class="p" href="tel:+491622684626">Call ops</a>
+  <a class="s" href="contact.html" data-request="general">Send enquiry</a>
+</nav>
+<script src="assets/site.js?v=243"></script>
+<script src="assets/request.js?v=210"></script>
+<script src="assets/fleet.js?v=207"></script>
+<!-- Both the homepage widget and the standalone estimator use the same route model and calculator. -->
+<!-- calculator-compatible-homepage-v231 -->
+<script src="assets/route-model.js?v=231"></script>
+<script src="assets/trip.js?v=243"></script>
+<script>
+/* critical: gallery controls, independent of the external bundle */
+(function(){
+  var t=document.getElementById('galTrack'); if(!t) return;
+  var d=document.getElementById('galDots'), p=document.getElementById('galPrev'), n=document.getElementById('galNext');
+  if(d && !d.children.length){
+    [].forEach.call(t.querySelectorAll('figure'),function(f,i){
+      var b=document.createElement('i');
+      b.addEventListener('click',function(){ t.scrollTo({left:i*t.clientWidth,behavior:'smooth'}); });
+      d.appendChild(b);
+    });
+  }
+  function i(){ return Math.round(t.scrollLeft/t.clientWidth); }
+  function last(){ return t.querySelectorAll('figure').length-1; }
+  function sync(){
+    [].forEach.call(d.children,function(x,k){ x.classList.toggle('on',k===i()); });
+    p.disabled = i()<=0;
+    n.classList.toggle('wrap', i()>=last());
+  }
+  p.onclick=function(){ if(!p.disabled) t.scrollTo({left:(i()-1)*t.clientWidth,behavior:'smooth'}); };
+  n.onclick=function(){ t.scrollTo({left:(i()>=last()?0:i()+1)*t.clientWidth,behavior:'smooth'}); };
+  t.addEventListener('scroll',function(){ clearTimeout(t._g); t._g=setTimeout(sync,80); },{passive:true});
+  addEventListener('resize',sync); sync();
+})();
+</script>
+</body>
+</html>
